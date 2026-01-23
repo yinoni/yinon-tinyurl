@@ -59,6 +59,7 @@ public class TinyUrlService {
 
         userService.increaseMongoField(tinyRequest.getUserName(), "shorts."+tiny+".clicks."+LocalDateTime.now().getMonth());
         userService.increaseMongoField(tinyRequest.getUserName(), "allUserClicks");
+        userService.saveUserClick(tiny, tinyRequest);
 
         if (tinyRequest.getLongUrl() != null) {
             return new ModelAndView("redirect:" + tinyRequest.getLongUrl());
